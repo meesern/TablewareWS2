@@ -1,0 +1,91 @@
+
+= Busaba Trackable Tableware web back-end and API
+
+== Overview
+
+This app provides a web administrators interface for managing the content and mapping of dishes to codes and associated information such as recipes and personal dining history.  The app also provides a customer facing web front end (not currently developed) and an API for use by a customer held android app.  This page primarily details that API.
+
+Each dtouch code 'targets' a item.  Items are typically dishes such as 'Prawn Pomello'.  Codes, rather than representing dishes may represent more general informational items such as special offers of information about forthcoming events.  These information items are referred to as 'offers'.
+
+The mapping between codes and target items is expected to change on a week by week basis.  It is the job of the web back-end to maintain and update those mappings, and the job of the API to present them in a usable way to the android app.
+
+* All API results are returned as plain text or JSON.  
+* All API urls start /busaba/v1 to identify the service and indicate major release 1 of the API
+
+
+== Object Model
+
+| Code: 	| A unique dtouch colon separated numerical code recognised by the system (for example 1:1:1:1:3:3:5:5)  |
+| Dish: 	| A type of food identified by a code. |
+| Person: 	| An administrator or customer |
+
+
+== HTTP
+
+The API sets out to correctly use HTTP response codes for HTTP API request status.  API clients should handle any valid HTTP response code including redirect.  Possible response codes include:
+
+| 200 | OK             | Request successful - response contains valid data |
+| 400 | Bad Request    | The request was not well formed or required parameters were missing |
+| 403 | Not Authorized | Authentication failed.  API key may be unrecognised or not authorised for to access the data at the given URL |
+| 404 | Not Found      | The API was not found |
+| 500 | Internal Server Error | Problem with the service. |
+
+
+== Authentication
+
+The service initially runs unauthenticated.
+
+<**//Future//**>
+
+Key is presented in the http request header  (X-OcApiKey: YOUR_KEY)
+Keys are hierarchical 
+
+| UserKey:	| Access to User's Items and Witnesses    |
+| ItemKey:       | Access to an Item and its Entities      |
+| EntityKey:	| Access to an Entities and its Aspects   |
+| AspectKey:	| Access to an Aspect                     |
+
+Keys can be time bound, giving access to reports only within a specific range of times.
+
+Keys can be generated at
+* {{{http://data.horizon.ac.uk/v1/keygen/}}}
+
+
+=====example:
+{{{
+
+    curl --request GET --header "X-OcApiKey: YOUR_KEY" http://data.horizon.ac.uk/V1.0/data/745
+
+}}}
+
+
+== URL Scheme
+
+The following urls comprise the API
+
+|  /v1/<code>                   | General information for a code |
+|  /v1/<code>/<person>          | As above plus personal history relating to the code target |
+|  /v1/<code>/image             | A thumbnail image of the code target |
+|  /v1/<code>/title             | The name of the code target |
+|  /v1/<code>/url<1|2|3>        | URL's with HTML information fragments specific to the target type.  For dishes ur11 is recipie, url2 is a full size image and url3 is the dish back story.|
+|  /v1/person/<personid>        | Information about the person identified by <personid>. This is the only URL to support POST for update.|
+|  /v1/dish/<dishid>            | Information about the dish identified by <dishid> |
+
+
+
+== Code
+
+The detected dtouch code expressed as a UTF-8 string with colon separation.
+
+* {{{http://data.horizon.ac.uk/v1/<code>}}}
+
+=====example:
+
+{{{
+
+    curl http://data.horizon.ac.uk/v1/1:1:1:1:3:3:5:5
+
+}}}
+
+
+

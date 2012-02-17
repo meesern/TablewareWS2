@@ -11,7 +11,43 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120213154652) do
+ActiveRecord::Schema.define(:version => 20120215144602) do
+
+  create_table "codes", :force => true do |t|
+    t.string   "codepoint"
+    t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "dish_id"
+    t.integer  "offer_id"
+  end
+
+  add_index "codes", ["dish_id"], :name => "index_codes_on_dish_id"
+  add_index "codes", ["offer_id"], :name => "index_codes_on_offer_id"
+
+  create_table "dishes", :force => true do |t|
+    t.string   "name"
+    t.string   "thumb"
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+    t.string   "url1"
+    t.string   "url2"
+    t.string   "url3"
+  end
+
+  create_table "offers", :force => true do |t|
+    t.string   "name"
+    t.string   "thumb"
+    t.string   "image"
+    t.string   "title"
+    t.string   "url1"
+    t.string   "url2"
+    t.string   "url3"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "crypted_password",          :limit => 40

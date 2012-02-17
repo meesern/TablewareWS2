@@ -2,6 +2,14 @@ BusabaDemo::Application.routes.draw do
   root :to => 'front#index'
 
   match 'search' => 'front#search', :as => 'site_search'
+  match 'docs' =>   'documentation#api', :as => 'docs'
+
+  get '/v1/:code(/:qualifier)' => 'api#code', :as =>'api'
+  get '/v1/dish/:dish'      =>  'api#dish'
+  get  '/v1/person/:person' =>  'api#person'
+  post '/v1/person/:person' =>  'api#update'
+
+  get 'hello' => proc { |env| [200, {}, "Hello from Rack"] }
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

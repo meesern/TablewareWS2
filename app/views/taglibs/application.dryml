@@ -1,1 +1,28 @@
 <!-- Global taglib - these tags are shared across all subsites -->
+
+
+<!-- ??? Not working
+<extend tag="page">
+  <old-page merge>
+    <without-live-search:/>
+    <without-search:/>
+    <before-account-nav:> 
+      <div>
+        <a href='/documentation/api'>API Documentation</a>
+      </div>
+    </before-account-nav:>
+  </old-page>
+</extend>  
+-->
+
+
+<def tag="markdown-page">
+<page>
+  <content:>
+    <div class="markdown" param="default"/>
+  </content>
+</page>
+</def>
+
+
+
