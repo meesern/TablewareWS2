@@ -1,10 +1,10 @@
 class Code < ActiveRecord::Base
   hobo_model # Don't put anything above this
-  TargetType = HoboFields::Types::EnumString.for(:food, :offer)
+  #TargetType = HoboFields::Types::EnumString.for(:food, :offer)
 
   fields do
     codepoint  :string
-    type       TargetType
+    type       :string
     timestamps
   end
 
@@ -12,7 +12,7 @@ class Code < ActiveRecord::Base
   belongs_to  :offer
 
   def type
-    @type || :food
+    @type || 'food'
   end
 
   # --- Permissions --- #

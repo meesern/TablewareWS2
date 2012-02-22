@@ -9,13 +9,7 @@
         <h3>An experimental Trackable Tableware web app from Horizon</h3>
         <p>This is the back end for the demonstation of a Trackable Tableware concept being explored in conjunction with Horizon Digital Economy Research and Busaba Ethai.  This website provides both the staff facing configuration interface and the Android App facing API to implement a dtouch based code recognition system linking ceramics designs, Thai dishes and their stories and consumer centric history and information. </p>
         <p>Our intention is to explore issues of privacy and data ownership as well as the interplay between designers and technologists.</p>
-    
-        <% if User.count == 0 -%>
-          <h3 style="margin-top: 20px;">There are no user accounts - please provide the details of the site administrator</h3>
-          <do with="&User.new"><% this.exempt_from_edit_checks = true %>
-            <signup-form/>
-          </do>
-        <% end -%>
+
         
         <% if User.count == 0 -%>
           <h3 style="margin-top: 20px;">There are no user accounts - please provide the details of the site administrator</h3>

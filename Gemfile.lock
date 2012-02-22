@@ -54,6 +54,7 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    map_by_method (0.8.3)
     mime-types (1.17.2)
     multi_json (1.0.4)
     polyglot (0.3.3)
@@ -89,6 +90,7 @@ GEM
       polyglot (>= 0.3.1)
     tzinfo (0.3.31)
     will_paginate (3.0.3)
+    wirble (0.1.3)
 
 PLATFORMS
   ruby
@@ -97,6 +99,8 @@ DEPENDENCIES
   WikiCreole
   carrierwave
   hobo (= 1.3.0)
+  map_by_method
   rabl
   rails (= 3.0.11)
   sqlite3
+  wirble
