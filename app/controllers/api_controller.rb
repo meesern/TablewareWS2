@@ -9,7 +9,7 @@ class ApiController < ApplicationController
   respond_to :json, :xml
 
   def code
-    @code = Code.find(params[:code])
+    @code = Code.find_by_codepoint(params[:code])
     raise_404 if (@code.nil?)
 
     if (@code.type == 'offer')
