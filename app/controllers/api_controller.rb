@@ -12,7 +12,6 @@ class ApiController < ApplicationController
     @code = Code.find_by_codepoint(params[:code])
     raise_404 if (@code.nil?)
 
-    logger.info "Wooooooooooooooooooooooo Type: #{@code.type}"
     if (@code.type == 'offer')
       @target = @code.offer
     else
@@ -20,7 +19,7 @@ class ApiController < ApplicationController
     end
 
     case params[:qualifier]
-      when nil
+      when nil, 'person'
         bare_code
         return
       when 'thumb'
@@ -43,7 +42,7 @@ class ApiController < ApplicationController
   end
 
   def bare_code
-    @person = User.find(params[:person]) unless params[:person].blank?
+    @person = User.find_by_name(params[:person]) unless params[:person].blank?
     @history =  dish_history
   end
 
@@ -54,7 +53,7 @@ class ApiController < ApplicationController
   def image_code
     imagename = @target.thumb if @imgsize == 'thumb'
     imagename = @target.image if @imgsize == 'image'
-    send_file RAILS_ROOT+"/public/images/#{imagename}", :type=> 'image/png', :disposition => 'inline' 
+    send_file ::Rails.root.to_s+"/public/images/#{imagename}", :type=> 'image/png', :disposition => 'inline' 
   end
 
   def dish

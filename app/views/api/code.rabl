@@ -7,3 +7,7 @@ glue @code do
   attribute :type
 end
 
+glue @person do
+  attribute :name
+end
+

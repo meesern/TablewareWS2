@@ -5,6 +5,7 @@ BusabaDemo::Application.routes.draw do
   match 'docs' =>   'documentation#api', :as => 'docs'
 
   get '/v1/:code(/:qualifier)' => 'api#code', :as =>'api'
+  get '/v1/:code/person/:person' => 'api#code', :as =>'api', :qualifier=>'person'
   get '/v1/dish/:dish'      =>  'api#dish'
   get  '/v1/person/:person' =>  'api#person'
   post '/v1/person/:person' =>  'api#update'
