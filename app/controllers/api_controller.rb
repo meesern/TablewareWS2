@@ -12,6 +12,7 @@ class ApiController < ApplicationController
     @code = Code.find_by_codepoint(params[:code])
     raise_404 if (@code.nil?)
 
+    logger.info "Wooooooooooooooooooooooo Type: #{@code.type}"
     if (@code.type == 'offer')
       @target = @code.offer
     else

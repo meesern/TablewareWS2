@@ -7,4 +7,3 @@ glue @code do
   attribute :type
 end
 
-

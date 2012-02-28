@@ -4,7 +4,6 @@ class Code < ActiveRecord::Base
 
   fields do
     codepoint  :string
-    type       :string
     timestamps
   end
 
@@ -12,7 +11,8 @@ class Code < ActiveRecord::Base
   belongs_to  :offer
 
   def type
-    @type || 'food'
+    #It's an offer if offer is defined, else its a food
+    (offer)? 'offer' : 'food'
   end
 
   # --- Permissions --- #

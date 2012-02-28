@@ -31,7 +31,16 @@ gem 'wirble'
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
-# group :development, :test do
-#   gem 'webrat'
-# end
+group :development, :test do
+  #gem install ruby-debug19 -- --with-ruby-include="$rvm_path/src/$(rvm tools identifier)/"
+  gem 'ruby-debug-ide19'
+  gem 'spork'
+  gem 'launchy'
+  gem 'rev' #for watchr
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'cucumber-rails'
+  gem 'steak'
+  gem 'watchr'
+end
 gem "hobo", "= 1.3.0"

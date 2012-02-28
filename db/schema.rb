@@ -11,11 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120215144602) do
+ActiveRecord::Schema.define(:version => 20120228094845) do
 
   create_table "codes", :force => true do |t|
     t.string   "codepoint"
-    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "dish_id"
