@@ -33,7 +33,6 @@ gem 'wirble'
 # and rake tasks are available in development mode:
 group :development, :test do
   #gem install ruby-debug19 -- --with-ruby-include="$rvm_path/src/$(rvm tools identifier)/"
-  gem 'ruby-debug-ide19'
   gem 'spork'
   gem 'launchy'
   gem 'rev' #for watchr
