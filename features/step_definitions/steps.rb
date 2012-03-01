@@ -19,7 +19,7 @@ Given /^I have mapped ([^ ]+) to the special offer (.+)$/ do |code, offer|
 end
 
 Given /^(.+) is registered$/ do |person|
-  @person = person
+  @person = User.create! :name=>person, :password=>'test1234', :password_confirmation=>'test1234', :email_address=>person+'@test.com'
 
 end
 

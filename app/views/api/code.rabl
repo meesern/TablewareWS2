@@ -8,6 +8,6 @@ glue @code do
 end
 
 glue @person do
-  attribute :name
+  attribute :name => :person 
 end
 
