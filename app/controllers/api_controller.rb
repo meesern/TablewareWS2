@@ -43,7 +43,10 @@ class ApiController < ApplicationController
 
   def bare_code
     @person = User.find_by_name(params[:person]) unless params[:person].blank?
-    @history =  dish_history
+    if @code.dish and @person
+      @history = @person.encounters.where(:dish_id => @code.dish)
+      puts "History is #{@history.to_json}"
+    end
   end
 
   def attr_code
@@ -61,12 +64,5 @@ class ApiController < ApplicationController
 
   def person
   end
-
-  protected
-
-  def dish_history
-    {:likes => "***"}
-  end
-
 
 end

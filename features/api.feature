@@ -13,6 +13,8 @@ Feature: Provide API
     When I request the code 
     Then I should see Prawn Pomello
     And I should get type: food
+    And I should get url1: http://www.somewhere
+    And I should get url2: http://www.somewhere-else
 
   Scenario: Get an offer mapped to a code
     Given I have mapped 1:1:1:1:2:3:5:6 to the special offer 10% off
@@ -42,5 +44,15 @@ Feature: Provide API
     Then I should see Prawn Pomello
     And  I should get type: food
     And  I should see bob
+
+  Scenario: Get the personal code
+    Given bob is registered
+    And   bob has encountered Prawn Pomello
+    When I request /v1/1:1:1:1:3:3:5:5/person/bob
+    Then I should see Prawn Pomello
+    And  I should get type: food
+    And  I should see 2012
+    And  I should get the rating
+    And  I should get the comment
 
 

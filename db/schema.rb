@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120228094845) do
+ActiveRecord::Schema.define(:version => 20120301144104) do
 
   create_table "codes", :force => true do |t|
     t.string   "codepoint"
@@ -35,6 +35,18 @@ ActiveRecord::Schema.define(:version => 20120228094845) do
     t.string   "url2"
     t.string   "url3"
   end
+
+  create_table "encounters", :force => true do |t|
+    t.string   "comment"
+    t.integer  "rating"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "dish_id"
+  end
+
+  add_index "encounters", ["dish_id"], :name => "index_encounters_on_dish_id"
+  add_index "encounters", ["user_id"], :name => "index_encounters_on_user_id"
 
   create_table "offers", :force => true do |t|
     t.string   "name"
