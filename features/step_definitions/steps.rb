@@ -5,6 +5,12 @@ Given /^I have dishes named (.+)$/ do |dishes|
   end
 end
 
+Given /^I have codes (.+)$/ do |codes|
+  codes.split(', ').each do |code|
+    Code.create! :codepoint=>code
+  end
+end
+
 Given /^I have mapped ([^ ]+) to the dish (.+)$/ do |code, dish|
   @code = code
   @url1 = 'http://www.somewhere'
@@ -33,6 +39,10 @@ end
 
 When /^I go to the list of dishes$/ do
   visit(dishes_path)
+end
+
+When /^I go to the list of codes$/ do
+  visit(codes_path)
 end
 
 When /^I request the code$/ do 
@@ -70,7 +80,6 @@ Then /^I should get the rating$/ do
 end
 
 Then /^I should get the comment$/ do
-  showpage(page)
   assert_keyval_on_page('comment', @comment, page)
 end
 

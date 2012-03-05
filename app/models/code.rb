@@ -10,6 +10,10 @@ class Code < ActiveRecord::Base
   belongs_to  :dish
   belongs_to  :offer
 
+  def name
+    codepoint
+  end
+
   def type
     #It's an offer if offer is defined, else its a food
     (offer)? 'offer' : 'food'
