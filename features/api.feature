@@ -51,8 +51,46 @@ Feature: Provide API
     When I request /v1/1:1:1:1:3:3:5:5/person/bob
     Then I should see Prawn Pomello
     And  I should get type: food
-    And  I should see 2012
+    And  I should get the date
     And  I should get the rating
     And  I should get the comment
+
+  Scenario: Get information about the person
+    Given bob is registered
+    And   his favourites are: Pandan Chicken, Char Grilled Duck
+    And   he has been offered 10% off
+    When I request /v1/person/bob
+    Then I should get name: bob
+    And  I should see 10% off
+    And  I should see Pandan Chicken
+    And  I should see Char Grilled Duck
+
+  Scenario: Get information about the person's eating history
+    Given bob is registered
+    And   bob has encountered Prawn Pomello
+    And   bob has encountered Chilli Chicken
+    When I request /v1/person/bob
+    And  I should see Prawn Pomello
+    And  I should see Chilli Chicken
+
+  Scenario: Get information about a dish
+    When I request /v1/dish/Prawn%20Pomello
+    Then I should get the urls
+
+  Scenario: Get information about a dish thumbnail
+    When I request /v1/dish/Prawn%20Pomello/thumb
+    Then I should get a picture
+
+  Scenario: Get information about a dish image
+    When I request /v1/dish/Prawn%20Pomello/image
+    Then I should get a picture
+
+  Scenario: Get information about the relation between a person and dish
+    Given bob is registered
+    And   bob has encountered Prawn Pomello
+    When I request /v1/dish/Prawn%20Pomello/person/bob
+    Then I should get the comment
+    And  I should get the rating
+    And  I should get the date
 
 

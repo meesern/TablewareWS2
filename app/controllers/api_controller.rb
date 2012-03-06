@@ -17,7 +17,17 @@ class ApiController < ApplicationController
     else
       @target = @code.dish
     end
+    qualify
+  end
 
+  def dish
+    @target = Dish.find_by_name(params[:dish])
+    raise_404 if (@target.nil?)
+    qualify
+  end
+
+  #Qualify for both code and dish based urls
+  def qualify
     case params[:qualifier]
       when nil, 'person'
         bare_code
@@ -43,9 +53,10 @@ class ApiController < ApplicationController
 
   def bare_code
     @person = User.find_by_name(params[:person]) unless params[:person].blank?
-    if @code.dish and @person
-      @history = @person.encounters.where(:dish_id => @code.dish)
-      puts "History is #{@history.to_json}"
+    #puts "person is #{@history}"
+    if @target.class != Offer and @person
+      @history = @person.encounters.where(:dish_id => @target.id)
+      #puts "History is #{@history.to_json}"
     end
   end
 
@@ -59,10 +70,11 @@ class ApiController < ApplicationController
     send_file ::Rails.root.to_s+"/public/images/#{imagename}", :type=> 'image/jpg', :disposition => 'inline' 
   end
 
-  def dish
-  end
-
   def person
+    @person = User.find_by_name(params[:person])
+    if @person
+      @history = @person.encounters.limit(10)
+    end
   end
 
 end

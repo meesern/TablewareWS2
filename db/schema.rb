@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120301144104) do
+ActiveRecord::Schema.define(:version => 20120305124514) do
 
   create_table "codes", :force => true do |t|
     t.string   "codepoint"
@@ -72,6 +72,8 @@ ActiveRecord::Schema.define(:version => 20120301144104) do
     t.datetime "updated_at"
     t.string   "state",                                   :default => "invited"
     t.datetime "key_timestamp"
+    t.string   "favourites"
+    t.string   "offers"
   end
 
   add_index "users", ["state"], :name => "index_users_on_state"

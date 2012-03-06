@@ -31,10 +31,20 @@ end
 
 Given /^(.+) has encountered (.+)$/ do |person, dish|
   p = User.find_by_name(person)
-  d = Dish.find_by_name(dish)
+  d = Dish.find_by_name(dish) || Dish.create!(:name=>dish)
   @rating=3
   @comment="Gosh that was nice!"
   Encounter.create! :user=>p, :dish=> d, :rating=>@rating, :comment=>@comment
+end
+
+Given /^his favourites are: (.+)$/ do |faves|
+  @person.favourites = faves
+  @person.save!
+end
+
+Given /^he has been offered (.+)$/ do |offers|
+  @person.offers = offers
+  @person.save!
 end
 
 When /^I go to the list of dishes$/ do
@@ -83,4 +93,14 @@ Then /^I should get the comment$/ do
   assert_keyval_on_page('comment', @comment, page)
 end
 
+Then /^I should get the date$/ do
+  pass = page.has_content?(Time.now.year.to_s)
+  showpage(page) unless pass
+  assert pass
+end
+
+Then /^I should get the urls$/ do
+  assert_keyval_on_page('url1', @url1, page)
+  assert_keyval_on_page('url2', @url2, page)
+end
 
