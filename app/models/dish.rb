@@ -15,6 +15,8 @@ class Dish < ActiveRecord::Base
 
   has_one :code
 
+  mount_uploader :image, ImageUploader
+
   # --- Permissions --- #
 
   def create_permitted?
