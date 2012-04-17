@@ -16,3 +16,9 @@ Feature: Manage information
     Then I should see 1:1:1:1:3:3:5:5
     And I should see 1:1:1:1:2:4:5:5
 
+  Scenario: 
+    Given I am admin
+    When I go to add a user
+    Then the user should be included
+
+

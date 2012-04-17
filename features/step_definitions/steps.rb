@@ -15,7 +15,7 @@ Given /^I have mapped ([^ ]+) to the dish (.+)$/ do |code, dish|
   @code = code
   @url1 = 'http://www.somewhere'
   @url2 = 'http://www.somewhere-else'
-  d = Dish.create! :name=>dish, :thumb=> 'rails.png', :image=>'rails.png', :url1=> @url1, :url2=> @url2
+  d = Dish.create! :name=>dish, :thumb=> 'images/rails.png', :image=>'images/rails.png', :url1=> @url1, :url2=> @url2
   Code.create! :codepoint=>code, :dish => d
 end
 

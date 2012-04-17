@@ -1,0 +1,18 @@
+
+<edit-page>
+  <content-body:>
+    <form multipart='true'>
+      <error-messages/>
+
+      <field-list fields="name, thumb, title, url1, url2, url3" />
+      <%= image_tag(@dish.image_url) if @dish.image? %> 
+      Image: <input type='file'   name='image'/>
+      <input type='hidden' name='image_cache'/>
+      <div >
+        <submit label="#{ht 'dish.actions.save', :default=>['Save']}"/>
+        <or-cancel/>
+      </div>
+    </form>
+  </content-body:>
+</edit-page>
+
