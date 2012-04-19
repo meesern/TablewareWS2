@@ -4,7 +4,6 @@ class Dish < ActiveRecord::Base
 
   fields do
     name  :string
-    thumb :string
     image :string
     title :string
     url1  :string
@@ -15,6 +14,7 @@ class Dish < ActiveRecord::Base
 
   has_one :code
 
+  #provides image and thumb
   mount_uploader :image, ImageUploader
 
   # --- Permissions --- #

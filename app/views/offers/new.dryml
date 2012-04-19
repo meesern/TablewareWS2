@@ -1,7 +1,7 @@
 
-<edit-page>
+<new-page>
   <content-body:>
     <dish-form/>
   </content-body:>
-</edit-page>
+</new-page>
 

@@ -4,7 +4,6 @@ class Offer < ActiveRecord::Base
 
   fields do
     name  :string
-    thumb :string
     image :string
     title :string
     url1  :string
@@ -14,6 +13,9 @@ class Offer < ActiveRecord::Base
   end
 
   has_one :code
+
+  #provides image and thumb
+  mount_uploader :image, ImageUploader
 
   # --- Permissions --- #
 

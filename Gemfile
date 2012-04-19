@@ -23,6 +23,7 @@ gem 'sqlite3'
 # gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
 gem 'carrierwave'
+gem 'rmagick'
 gem 'WikiCreole'
 gem 'rabl'
 gem 'map_by_method'   # Needed by IRB on my mac ubuntu 11 VM for some reason 

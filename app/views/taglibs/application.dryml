@@ -1,5 +1,18 @@
 <!-- Global taglib - these tags are shared across all subsites -->
 
+<def tag="dish-form">
+  <form multipart='true'>
+    <error-messages/>
+    <field-list fields="name, title, url1, url2, url3" />
+    <%= image_tag(this.image_url) if this.image? %> 
+    Image: <input type='file'  name='image'/>
+    <input type='hidden' name='image_cache'/>
+    <div >
+      <submit label="Save"/>
+      <or-cancel/>
+    </div>
+  </form>
+</def>
 
 <!-- ??? Not working
 <extend tag="page">
