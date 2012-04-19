@@ -67,7 +67,7 @@ class ApiController < ApplicationController
   def image_code
     imagename = @target.image.thumb if @imgsize == 'thumb'
     imagename = @target.image if @imgsize == 'image'
-    send_file ::Rails.root.to_s+"/public/#{imagename.current_path}", :type=> 'image/jpg', :disposition => 'inline' 
+    send_file imagename.current_path, :type=> 'image/jpg', :disposition => 'inline' 
   end
 
   def person
