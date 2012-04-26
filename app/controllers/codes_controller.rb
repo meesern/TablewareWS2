@@ -4,4 +4,8 @@ class CodesController < ApplicationController
 
   auto_actions :all
 
+  def codegen
+    @cg = Codegen.new(params)
+  end
+
 end

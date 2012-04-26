@@ -114,6 +114,7 @@ GEM
       json (~> 1.4)
     rev (0.3.2)
       iobuffer (>= 0.1.3)
+    rmagick (2.13.1)
     rspec (2.8.0)
       rspec-core (~> 2.8.0)
       rspec-expectations (~> 2.8.0)
@@ -165,6 +166,7 @@ DEPENDENCIES
   rabl
   rails (= 3.0.11)
   rev
+  rmagick
   spork
   sqlite3
   steak

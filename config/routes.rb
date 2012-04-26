@@ -3,6 +3,7 @@ BusabaDemo::Application.routes.draw do
 
   match 'search' => 'front#search', :as => 'site_search'
   match 'docs' =>   'documentation#api', :as => 'docs'
+  match 'codegen' =>'codes#codegen', :as => 'codegen'
 
   get '/v1/dish/:dish(/:qualifier)'  => 'api#dish'
   get '/v1/dish/:dish/person/:person' => 'api#dish', :qualifier=>'person'

@@ -1,3 +1,10 @@
 
-<index-page/>
+<index-page>
+  <append-content-header:>
+    <div>
+      <br/>
+      <a href="/codegen">Explore Valid Codes</a>
+    </div>
+  </append-content-header:>
+</index-page>
 

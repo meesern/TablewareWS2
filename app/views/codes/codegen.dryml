@@ -1,0 +1,104 @@
+
+<page title="Code Generator">
+  <content:>
+    <header class="content-header">
+      <h2 class='heading'>
+        Code Generator
+      </h2>
+    </header>
+
+    <div class='content-body'>
+      <div id='cg-summary'>
+        <p>There are #{@cg.length} valid codes.</p>
+      </div>
+      <hr/>
+      <div id='cg-params'>
+         <form action="/codegen" with="&@cg">
+           <table>
+           <tr>
+             <td><label>Min Branches:</label></td>
+             <td><input type='text' size='4' name='min_branches' value='&@cg.min_regions'/></td>
+             <td>
+               <p>
+               The smallest number of regions that the marker may have (including any validation regions).  Must be larger than Validation Branches and smaller or equal to Max Branches.
+               </p>
+             </td>
+           </tr>
+           <tr>
+             <td> <label>Max Branches:</label> </td>
+             <td> <input type='text' size='4' name='max_branches' value='&@cg.max_regions'/> </td>
+             <td>
+               <p>
+               The largest number of regions that the marker may have (including validation regions). Typically set the same as Min Branches.
+               </p>
+               <p>
+               Increase this and Min Branches to get more codes.
+               </p>
+             </td>
+           </tr>
+           <tr>
+             <td> <label>Empty Branches:</label> </td>
+             <td> <input type='text' size='4' name='empty_branches' value='&@cg.empties'/> </td>
+             <td>
+               <p>
+               How many of the regions in the marker may be empty (contain zero blobs).  Best to keep this as zero to reduce the number of non-markers that look like markers (i.e. all sorts of things look like markers with empty regions).
+               </p>
+             </td>
+           </tr>
+           <tr>
+             <td> <label>Validation Branches:</label> </td>
+             <td> <input type='text' size='4' name='validation_branches' value='&@cg.validation_regions'/> </td>
+             <td>
+               <p>
+                 How many of the regions have to have a fixed validation value.  These help to limit mis-recognition.  Marker designs should spread validation regions accross the design.
+               </p>
+             </td>
+           </tr>
+           <tr>
+             <td> <label>Max Leaves:</label> </td>
+             <td> <input type='text' size='4' name='max_leaves' value='&@cg.max_blobs'/> </td>
+             <td>
+               <p>
+                 The maximum number of blobs a marker may have in each region.  Increase this number to get more codes.
+               </p>
+             </td>
+           </tr>
+           <tr>
+             <td> <label>Validation Branch Leaves:</label> </td>
+             <td> <input type='text' size='4' name='validation_branch_leaves' value='&@cg.validation_value'/> </td>
+             <td>
+               <p>
+                 The maximum number of blobs that each validation region in the marker may have.
+               </p>
+             </td>
+           </tr>
+           <tr>
+             <td> <label>Checksum:</label> </td>
+             <td> <input type='text' size='4' name='checksum' value='&@cg.checksum_value'/> </td>
+             <td>
+               <p>
+               The sum that all of the blobs in all of the regions must divide by.  Typically this will be the same as Max Leaves.  
+               </p>
+               <p>
+               Higher values will make detection more robust.  Lower values will increase the number of codes but increase the chance of mis-recognition.
+               </p>
+             </td>
+           </tr>
+           <tr>
+             <td> <submit label='Update'/> </td>
+           </tr>
+           </table>
+         </form>
+      </div>
+      <hr/>
+      <div id='cg-codes'>
+        <ol>
+          <repeat with="&@cg.codes[0..500]">
+            <li><view/></li>
+          </repeat>
+        </ol>
+      </div>
+    </div>
+  </content:>
+</page>
+
