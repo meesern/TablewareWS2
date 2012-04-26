@@ -14,6 +14,15 @@
   </form>
 </def>
 
+<def tag='show-dish'>
+  <show-page>
+    <append-content-body:>
+        <image src="../#{this.image}"/>
+    </append-content-body:>
+  </show-page>
+</def>
+
+
 <!-- ??? Not working
 <extend tag="page">
   <old-page merge>

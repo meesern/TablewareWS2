@@ -28,6 +28,7 @@ gem 'WikiCreole'
 gem 'rabl'
 gem 'map_by_method'   # Needed by IRB on my mac ubuntu 11 VM for some reason 
 gem 'wirble' 
+gem 'andand'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators

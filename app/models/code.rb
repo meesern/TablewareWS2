@@ -11,7 +11,7 @@ class Code < ActiveRecord::Base
   belongs_to  :offer
 
   def name
-    codepoint
+    "#{codepoint}  #{self.dish.andand.name || self.offer.andand.name}"
   end
 
   def type

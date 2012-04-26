@@ -30,6 +30,7 @@ GEM
       activesupport (= 3.0.11)
     activesupport (3.0.11)
     addressable (2.2.7)
+    andand (1.3.3)
     arel (2.0.10)
     builder (2.1.2)
     capybara (1.1.2)
@@ -156,6 +157,7 @@ PLATFORMS
 
 DEPENDENCIES
   WikiCreole
+  andand
   capybara
   carrierwave
   cucumber-rails
