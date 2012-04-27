@@ -68,7 +68,7 @@
              <td> <input type='text' size='4' name='validation_branch_leaves' value='&@cg.validation_value'/> </td>
              <td>
                <p>
-                 The maximum number of blobs that each validation region in the marker may have.
+                 The fixed number of blobs that each validation region in the marker must have.
                </p>
              </td>
            </tr>
