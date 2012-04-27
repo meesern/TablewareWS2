@@ -16,10 +16,19 @@
 
 <def tag='show-dish'>
   <show-page>
-    <append-content-body:>
-        <image src="../#{this.image}"/>
-    </append-content-body:>
+    <content-body:>
+      <field-list fields="image, title, url1, url2, url3">
+        <url1-view:><linkview/></url1-view:>
+        <url2-view:><linkview/></url2-view:>
+        <url3-view:><linkview/></url3-view:>
+      </field-list>
+      <image src="../#{this.image}"/>
+    </content-body:>
   </show-page>
+</def>
+
+<def tag='linkview'>
+  <a href='&this' target='_blank'>#{this}</a>
 </def>
 
 
