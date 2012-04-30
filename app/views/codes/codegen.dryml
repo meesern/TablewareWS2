@@ -1,5 +1,13 @@
 
 <page title="Code Generator">
+  <append-scripts:>
+    <javascript name='jquery, jquery-ui' />
+    <javascript name="http://mbostock.github.com/d3/d3.v2.js"/>
+    <script>
+      //Make jQuery play nicely with prototype
+      var $j = jQuery.noConflict();
+    </script>
+  </append-scripts:>
   <content:>
     <header class="content-header">
       <h2 class='heading'>
@@ -92,13 +100,25 @@
       </div>
       <hr/>
       <div id='cg-codes'>
+      <div id='chart'/>
+      <script type='text/javascript'>
+        $j(function() {
+          drawathing();});
+      </script>
         <ol>
           <repeat with="&@cg.codes[0..500]">
-            <li><view/></li>
+            <li><marker/></li>
           </repeat>
         </ol>
       </div>
     </div>
   </content:>
 </page>
+
+<def tag="marker">
+  <view/>
+
+  <hr/>
+</def>
+
 
