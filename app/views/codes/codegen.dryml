@@ -1,13 +1,15 @@
 
 <page title="Code Generator">
   <append-scripts:>
-    <javascript name='jquery, jquery-ui' />
-    <javascript name="http://mbostock.github.com/d3/d3.v2.js"/>
+    <javascript name='jquery, jquery-ui, d3.v2.js' />
     <script>
       //Make jQuery play nicely with prototype
       var $j = jQuery.noConflict();
     </script>
   </append-scripts:>
+  <append-stylesheets:>
+    <stylesheet name='dtouch'/>
+  </append-stylesheets:>
   <content:>
     <header class="content-header">
       <h2 class='heading'>
@@ -100,11 +102,6 @@
       </div>
       <hr/>
       <div id='cg-codes'>
-      <div id='chart'/>
-      <script type='text/javascript'>
-        $j(function() {
-          drawathing();});
-      </script>
         <ol>
           <repeat with="&@cg.codes[0..500]">
             <li><marker/></li>
@@ -117,8 +114,10 @@
 
 <def tag="marker">
   <view/>
-
+  <div id="c#{this.gsub(':','-')}"></div>
+  <script type='text/javascript'>
+    $j(drawmarker("#{this}"));
+  </script>
   <hr/>
 </def>
-
 
