@@ -1,0 +1,23 @@
+
+/*Styling for auto genereated dtouch markers */
+
+#root {
+  stroke: white;
+  fill: white;
+  display: none;
+}
+.node { 
+  stroke: black;
+  fill: white;
+  stroke-width: 4px;
+}
+.leaf {
+  stroke: white;
+  fill: black;
+}
+
+path {
+  fill: black;
+  stroke: black;
+}
+
