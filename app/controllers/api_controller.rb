@@ -77,4 +77,9 @@ class ApiController < ApplicationController
     end
   end
 
+  def comunique
+    logger.info("------------------> " + params[:message] + " <------------------")
+    render :text => "understood"
+  end
+
 end
