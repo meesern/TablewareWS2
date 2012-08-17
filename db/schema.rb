@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120418091628) do
+ActiveRecord::Schema.define(:version => 20120817135013) do
 
   create_table "codes", :force => true do |t|
     t.string   "codepoint"
@@ -23,6 +23,13 @@ ActiveRecord::Schema.define(:version => 20120418091628) do
 
   add_index "codes", ["dish_id"], :name => "index_codes_on_dish_id"
   add_index "codes", ["offer_id"], :name => "index_codes_on_offer_id"
+
+  create_table "communiques", :force => true do |t|
+    t.text     "message"
+    t.text     "originator"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "dishes", :force => true do |t|
     t.string   "name"

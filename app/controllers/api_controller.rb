@@ -78,7 +78,11 @@ class ApiController < ApplicationController
   end
 
   def comunique
-    logger.info("------------------> " + params[:message] + " <------------------")
+    logger.info("------------------> " + params[:message] + " from " params[:person] + " <------------------")
+    #Save into the database for display elsewhere
+    com = Comuniuque.new :message => params[:message], 
+                         :originator => params[:person]
+    com.save
     render :text => "understood"
   end
 
