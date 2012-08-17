@@ -9,6 +9,7 @@ BusabaDemo::Application.routes.draw do
   get '/v1/dish/:dish/person/:person' => 'api#dish', :qualifier=>'person'
   get '/v1/person/:person' =>  'api#person'
   get '/v1/comunique/:message' =>  'api#comunique'
+  get '/v1/comunique/:message/person/:person' =>  'api#comunique'
   get '/v1/:code(/:qualifier)' => 'api#code'
   get '/v1/:code/person/:person' => 'api#code', :qualifier=>'person'
 
