@@ -1,0 +1,30 @@
+
+/* Communique table styling */
+
+th,td {
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.odd {
+  background: #dddddd;
+}
+
+.created-at-heading {
+  min-width: 150px;
+}
+
+.name-heading {
+  min-width: 200px;
+}
+
+.customer-heading {
+  min-width: 100px;
+}
+
+.customer-party-heading {
+  min-width: 100px;
+}
+

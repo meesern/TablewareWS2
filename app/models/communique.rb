@@ -9,6 +9,10 @@ class Communique < ActiveRecord::Base
   
   belongs_to :customer
 
+  def name
+    message
+  end
+
   # --- Permissions --- #
 
   def create_permitted?
