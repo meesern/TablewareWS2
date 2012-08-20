@@ -84,7 +84,7 @@ class ApiController < ApplicationController
     customer = Customer.find_or_create_by_uname(person)
 
     #Save into the database for display elsewhere
-    com = Comuniuque.new :message => params[:message],
+    com = Communiuque.new :message => params[:message],
                          :customer => customer
     com.save
     render :text => "understood"
