@@ -9,6 +9,7 @@ class Customer < ActiveRecord::Base
   end
   
   belongs_to :party
+  has_many   :communiques
 
   def name
     "#{uname}: #{known_name}"

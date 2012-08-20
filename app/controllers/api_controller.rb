@@ -79,9 +79,13 @@ class ApiController < ApplicationController
 
   def comunique
     logger.info("------------------> " + params[:message] + " from " + params[:person] + " <------------------")
+    person = params[:person]
+    person ||= request.remote_ip
+    customer = Customer.find_or_create_by_uname(person)
+
     #Save into the database for display elsewhere
-    com = Comuniuque.new :message => params[:message], 
-                         :originator => params[:person]
+    com = Comuniuque.new :message => params[:message],
+                         :customer => customer
     com.save
     render :text => "understood"
   end

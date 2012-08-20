@@ -4,9 +4,10 @@ class Communique < ActiveRecord::Base
 
   fields do
     message    :text
-    originator :text
     timestamps
   end
+  
+  belongs_to :customer
 
   # --- Permissions --- #
 

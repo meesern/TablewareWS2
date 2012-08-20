@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120820094551) do
+ActiveRecord::Schema.define(:version => 20120820101535) do
 
   create_table "codes", :force => true do |t|
     t.string   "codepoint"
@@ -26,10 +26,12 @@ ActiveRecord::Schema.define(:version => 20120820094551) do
 
   create_table "communiques", :force => true do |t|
     t.text     "message"
-    t.text     "originator"
+    t.integer  "customer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "communiques", ["customer_id"], :name => "index_communiques_on_customer_id"
 
   create_table "customers", :force => true do |t|
     t.text     "uname"
