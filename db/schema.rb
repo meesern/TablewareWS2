@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120817135013) do
+ActiveRecord::Schema.define(:version => 20120820094551) do
 
   create_table "codes", :force => true do |t|
     t.string   "codepoint"
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(:version => 20120817135013) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "customers", :force => true do |t|
+    t.text     "uname"
+    t.text     "known_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "party_id"
+  end
+
+  add_index "customers", ["party_id"], :name => "index_customers_on_party_id"
 
   create_table "dishes", :force => true do |t|
     t.string   "name"
@@ -61,6 +71,15 @@ ActiveRecord::Schema.define(:version => 20120817135013) do
     t.string   "url1"
     t.string   "url2"
     t.string   "url3"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "parties", :force => true do |t|
+    t.text     "name"
+    t.integer  "table"
+    t.datetime "seated"
+    t.datetime "left"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
