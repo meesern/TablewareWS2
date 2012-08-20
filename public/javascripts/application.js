@@ -1,6 +1,20 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 
+function setup_message_table()
+{
+  //Set up the refresh
+  jQuery.ajaxSetup({
+    'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+  })
+
+  //Every 3 seconds do an ajax get and execute (of communiqes/index.js)
+  setInterval(function(){
+    $j.get("communiques", null, "script")
+  }, 3000);
+}
+
+
 function drawmarker(code)
 {
   var width = 200,

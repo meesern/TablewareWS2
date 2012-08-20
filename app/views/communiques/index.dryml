@@ -1,19 +1,23 @@
 
 <index-page>
-  <!-- Ugly refresh -->
+  <!-- Ugly refresh 
   <append-head:>
     <meta http-equiv="refresh" content="5"/>
   </append-head:>
+  -->
+  <prepend-scripts:>
+    <javascript name='jquery' />
+    <script>
+      //Make jQuery play nicely with prototype
+      var $j = jQuery.noConflict();
+      $j(document).ready(function() {
+        setup_message_table();
+      })
+    </script>
+  </prepend-scripts:>
   <content-body:>
       <page-nav class="top-page-nav"/>
-      <table fields="created_at, name, customer, customer.party, customer.party.table" class="card" >
-          <created-at-heading:>Request Time</created-at-heading:>
-          <name-heading:>Message</name-heading:>
-          <customer-party-heading:>Party</customer-party-heading:>
-          <customer-party-table-heading:>Table</customer-party-table-heading:>
-          <created-at-view:><view format="%e/%m/%y: %r"/></created-at-view:>
-          <controls:/>
-      </table>
+      <%= render(:partial => "table").html_safe %>
       <page-nav class="bottom-page-nav"/>
   </content-body:>
 </index-page>
