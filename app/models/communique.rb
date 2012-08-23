@@ -3,7 +3,8 @@ class Communique < ActiveRecord::Base
   hobo_model # Don't put anything above this
 
   fields do
-    message    :text
+    message    :string
+    ack        :boolean
     timestamps
   end
   
@@ -11,6 +12,11 @@ class Communique < ActiveRecord::Base
 
   def name
     message
+  end
+
+  def acknowledge
+    self.ack=true
+    save!
   end
 
   # --- Permissions --- #
@@ -31,4 +37,7 @@ class Communique < ActiveRecord::Base
     acting_user.administrator?
   end
 
+  def acknowledge_permitted?
+    acting_user.administrator?
+  end
 end

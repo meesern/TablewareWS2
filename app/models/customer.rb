@@ -3,8 +3,8 @@ class Customer < ActiveRecord::Base
   hobo_model # Don't put anything above this
 
   fields do
-    uname      :text
-    known_name :text
+    uname      :string
+    known_name :string
     timestamps
   end
   

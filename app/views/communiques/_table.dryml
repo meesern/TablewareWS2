@@ -1,11 +1,19 @@
 
 <!-- partial for ajax update of table -->
-<table fields="created_at, name, customer, customer.party, customer.party.table" class="card" id="message_table">
+<table fields="ack, created_at, name, customer, customer.party, customer.party.table" class="card" id="message_table">
     <created-at-heading:>Request Time</created-at-heading:>
     <name-heading:>Message</name-heading:>
     <customer-party-heading:>Party</customer-party-heading:>
     <customer-party-table-heading:>Table</customer-party-table-heading:>
+    <ack-view:>
+      <%if this %>
+        <image src="ok.png" height="20px"/>
+      <%end%>
+    </ack-view:>
     <created-at-view:><view format="%e/%m/%y: %r"/></created-at-view:>
-    <controls:/>
+    <controls:>
+      <remote-method-button method="acknowledge" label="Ack"/>
+      <!--<delete-button/>-->
+    </controls:>
 </table>
 

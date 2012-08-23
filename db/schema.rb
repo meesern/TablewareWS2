@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120820101535) do
+ActiveRecord::Schema.define(:version => 20120823111701) do
 
   create_table "codes", :force => true do |t|
     t.string   "codepoint"
@@ -25,17 +25,18 @@ ActiveRecord::Schema.define(:version => 20120820101535) do
   add_index "codes", ["offer_id"], :name => "index_codes_on_offer_id"
 
   create_table "communiques", :force => true do |t|
-    t.text     "message"
+    t.string   "message"
     t.integer  "customer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "ack"
   end
 
   add_index "communiques", ["customer_id"], :name => "index_communiques_on_customer_id"
 
   create_table "customers", :force => true do |t|
-    t.text     "uname"
-    t.text     "known_name"
+    t.string   "uname"
+    t.string   "known_name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "party_id"
@@ -78,7 +79,7 @@ ActiveRecord::Schema.define(:version => 20120820101535) do
   end
 
   create_table "parties", :force => true do |t|
-    t.text     "name"
+    t.string   "name"
     t.integer  "table"
     t.datetime "seated"
     t.datetime "left"
